@@ -1,2 +1,2 @@
-# MySQL---Banco-de-Dados
+# MySQL-Banco-de-Dados
 Exercícios propostos Bootcamp Generation
