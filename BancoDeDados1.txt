@@ -1,0 +1,46 @@
+
+Crie um banco de dados para um serviço de RH de uma empresa, onde o sistema trabalhará com as informações dos funcionários desta empresa.
+
+
+Faça um select que retorne os funcionários com o salário maior do que 2000.
+SELECT * FROM tb_empresa where salário >= 2000
+
+Faça um select que retorne os funcionários com o salário menor do que 2000.
+SELECT * FROM tb_empresa where salário <=2000
+
+1	João	31	45986468	porteiro	  1600
+2	Maria	44	3386530	               recepcionista1500
+3	Daniela	22	478903456	Aux. ADM	2200
+4	Matheus	44	876543987	Gerente	4500
+5	Rafaela	28	555543987	Auxiliar	1500
+6	Marta	40	876773987	ajudante	1400
+					
+
+
+
+
+Crie um banco de dados para um registro de uma escola, onde o sistema trabalhará com as informações dos alunos deste registro dessa escola. 
+
+Faça um select que retorne o/as alunos/a com a nota maior do que 7.
+SELECT * FROM tb_aluno where notas >=7
+
+Faça um select que retorne o/as alunos/a com a nota menor do que 7.
+SELECT * FROM tb_aluno where notas <=7
+
+
+INSERT INTO tb_alunos (nome, idade, tel, turma, ativo,notas) VALUES ("Ana", 4, 22333839, "manhã",1, 10)
+INSERT INTO tb_alunos  (nome, idade, tel, turma, ativo,notas) VALUES ("PedrO",5, 66333839, "manhã",1, 09);
+INSERT INTO tb_alunos  (nome, idade, tel, turma, ativo,notas)VALUES ("Joana", 6, 222333839, "manhã",1, 06);
+INSERT INTO tb_alunos (nome, idade, tel, turma, ativo,notas) VALUES ("Rafael", 6, 88833839, "tarde", 1 , 05);
+INSERT INTO tb_alunos  (nome, idade, tel, turma, ativo,notas)VALUES ("Thomas", 5, 223343839," tarde", 1 ,09);
+INSERT INTO tb_alunos (nome, idade, tel, turma, ativo,notas) VALUES ("Fabiana", 7, 665343839, "tarde", 1 , 08);
+
+
+
+1	Ana	4	22333839	manhã	1     10	
+2	Pedro	5	66333839	manhã	1     09	
+3	Joana	6	222333839	manhã	1     06	
+4	Rafael	6	88833839	tarde	1     05	
+5	Thomas	5	223343839	tarde	1     09	
+6	Fabiana	7	665343839	tarde	1     08	
+
