@@ -1,0 +1,196 @@
+Crie uma tabela tb_classe utilizando a habilidade de abstração e determine 3 atributos relevantes para se trabalhar com o serviço desse  game Online.
+
+
+use db_generation_game_online;
+
+  create table tb_classe(
+                id bigint (5) auto_increment,
+               classe  varchar(30) not null,
+               atributo varchar (30) not null,
+              grandeza  varchar(20) not null,
+               primary  key (id)
+ );      
+       
+insert into tb_classe (classe, atributo, grandeza) values ("caçador", "astúcia","forte");
+insert into tb_classe (classe, atributo, grandeza) values ("mágico", "feitiçaria","Super forte");
+insert into tb_classe (classe, atributo, grandeza) values ("guerreiro", "Força","Super forte");
+
+
+
+ use db_generation_game_online;
+
+  create table tb_personagem(
+                     id bigint (5)  auto_increment,
+                    classe varchar(30) not null,
+                   nome varchar (30) not null,
+                   instrumento varchar(20) not null,
+                   característica varchar (20) not null,
+                   pontuação bigint (2) not null,
+                   classe_id bigint not null,
+        
+       primary key (id),
+       foreign key (classe_id) references tb_classe (idtb_personagem_ibfk_1)
+
+ )
+       
+insert into tb_personagem (classe, nome, instrumento,característica,pontuação, classe_id)
+ values ("caçador", "Odor", "arco e flexa", "camuflagem", 5, 1);
+
+insert into tb_personagem (classe, nome, instrumento,característica,pontuação, classe_id)
+ values ("mágico", "Zedir", "livro de magias", "inteligencia", 5, 2);
+
+insert into tb_personagem (classe, nome, instrumento,característica,pontuação, classe_id)
+ values ("guerreiro", "Ádila", "machado", "rapidez", 5, 3);
+
+insert into tb_personagem (classe, nome, instrumento,característica,pontuação, classe_id)
+ values ("caçador", "Darlan", "faca", "corredor", 4, 1);
+
+insert into tb_personagem (classe, nome, instrumento,característica,pontuação, classe_id)
+ values ("magico", "Caldek", "varinha mágica", "raciocínio", 4, 2);
+
+
+
+Faça um select  utilizando LIKE buscando os personagens com a letra C.
+select * from tb_personagem where nome like '%c%';
+
+Faça um um select com Inner join entre  tabela classe e personagem.
+
+    inner join tb_classe on tb_classe.id = tb_personagem.classe_id;
+select tb_personagem.nome, tb_personagem.estoque, tb_classe.personagem from tb_personagem
+
+
+
+
+
+*Atividade 2*
+
+Crie um banco de dados para um serviço de pizzaria de uma empresa, o nome do banco deverá ter o seguinte nome db_pizzaria_legal, 
+onde o sistema trabalhará com as informações dos produtos desta empresa. 
+
+
+
+use db_pizzaria_legal;
+
+create table tb_categoria(
+  id bigint auto_increment,
+  tamanho varchar (30) not null,
+  Preço bigint (5) not null,
+  Tipo varchar (20) not null,
+  
+      primary key (id)
+
+);
+
+ 
+insert into tb_categoria (tamanho, Preço, Tipo)
+ values ("Grande", 65 , "massa fina");
+insert into tb_categoria (tamanho, Preço, Tipo)
+ values ("Media", 33, "massa fina");
+insert into tb_categoria (tamanho, Preço, Tipo)
+ values ("Pequena", 23, "massa fina");
+
+
+
+use db_pizzaria_legal;
+
+  create table tb_produto(
+                   id bigint (10)  auto_increment,
+                  sabor varchar(30) not null,
+                  tamanho varchar (30) not null,
+                  complemento varchar (10) not null,
+                  categoria_id bigint not null,		  
+        		  
+       primary key (id),
+       foreign key (categoria_id) references tb_categoria (idtb_produto_ibfk_1)
+
+);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("Queijo", "Grande", "não" , 1);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("Calabresa", "Grande", "sim" , 1);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("portuguesa", "média", "não" , 3);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("Brigadeiro", "pequena", "não" , 4);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("Camarão", "Grande", "não" , 1);
+
+insert into tb_produto (sabor, tamanho , complemento, categoria_id)
+ values ("Especial", "Grande", "não" , 1);
+
+SELECT preço from tb_categoria where preço > 45;
+SELECT preço from tb_categoria where preço between 29 and 60;
+SELECT sabor from tb_produto where sabor like "%c%";
+SELECT sabor from tb_produto 
+   inner join tb_categoria on tb_categoria.id = tb_produto.categoria_id;
+
+
+*Exercício 3*
+
+Crie uma tabela de categorias utilizando a habilidade de abstração e determine 3 atributos relevantes do tb_categoria para se trabalhar com o serviço desta farmacia.
+
+use db_farmacia_do_bem;
+
+ create table tb_categoria(
+       id bigint(5) auto_increment,
+       Quantidade bigint(3) not null,
+      Categoria varchar(50) not null,
+    
+     primary key(id)
+ );
+
+     
+INSERT INTO tb_categoria (Quantidade, Categoria)
+ VALUES (80, "Cosméticos");
+INSERT INTO tb_categoria (Quantidade, Categoria)
+ VALUES (65, "Tarja preta");
+INSERT INTO tb_categoria (Quantidade, Categoria) 
+VALUES (91, "Sem receita"); 
+
+
+   
+create table tb_produtos(
+id int(5) auto_increment,
+Produto varchar(60),
+Preço bigint(6) not null,
+Código bigint(6) not null,
+categoria_id bigint not null,
+
+  primary key (id),
+       foreign key (categoria_id) references tb_categoria (idtb_produtos_ibfk_1)
+);
+
+
+
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id) 
+VALUES ("Aspirina", 5, 89862, 3);
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id)
+ VALUES ("Dorflex", 10, 78203, 3);
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id) 
+VALUES ("Dipirona", 10, 44444, 3);
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id) 
+VALUES ("Bentex Condicionador", 20, 33221, 1);
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id) 
+VALUES ("Esmalte", 4, 99011, 1);
+INSERT INTO tb_produtos (Produto, Preço, Código, Categoria_id)
+ VALUES ("Eno", 6, 66552, 3);
+INSERT INTO tb_produtos (Produto, Preço, Código, categoria_id) 
+VALUES ("Revotril", 60, 88292, 2);
+
+
+select * from tb_produtos where valor < 50;
+select * from tb_produtos where valor between 3 and 60;
+select * from tb_produtos where nome like '%b%';
+
+select produto, preço, categoria from tb_produtos
+inner join tb_categoria on tb_produtos.categoria_id = tb_categoria.id
+where Categoria = "Sem receita"
+
+
+
+
